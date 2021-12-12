@@ -5,12 +5,12 @@ from django.db import models
 # Create your models here.
 
 class User(AbstractUser):
-    USER = 'U'
+    DEVELOPER = 'U'
     MANAGER = 'M'
     ADMIN = 'A'
 
     USER_ROLE_CHOICES = (
-        (USER, 'Пользователь'),
+        (DEVELOPER, 'Разработчик'),
         (MANAGER, 'Менеджер'),
         (ADMIN, 'Админ'),
     )
@@ -18,7 +18,9 @@ class User(AbstractUser):
     role = models.CharField(verbose_name='Роль',
                             max_length=1,
                             choices=USER_ROLE_CHOICES,
-                            default=USER)
+                            default=DEVELOPER)
+    email = models.EmailField(verbose_name='Почта', unique=True)
+    groups = None
 
     class Meta:
         verbose_name = 'Пользователь'
