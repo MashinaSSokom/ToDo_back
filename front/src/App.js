@@ -1,8 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react'
-import axios from 'axios'
-
+import axios from "axios";
 import UsersList from "./components/UsersList";
 
 class App extends React.Component {
