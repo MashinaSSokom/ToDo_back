@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react'
+import axios from 'axios'
 
 import UsersList from "./components/UsersList";
 
@@ -13,28 +14,32 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        const users = [
-            {
-                "id": 1,
-                "password": "pbkdf2_sha256$320000$d2AdQVAXuWOXP4bX2h2MjZ$7J41nP79MbqiKRoKLlcPZ+T+gvB9HJPhq2IGUyodkho=",
-                "last_login": "2022-01-13T06:46:15.797349Z",
-                "is_superuser": true,
-                "username": "admin",
-                "first_name": "admin",
-                "last_name": "admin",
-                "is_staff": true,
-                "is_active": true,
-                "date_joined": "2022-01-13T06:45:39.098578Z",
-                "role": "U",
-                "email": "admmin@admin.admin",
-                "user_permissions": []
-            }
-        ]
-        this.setState(
-            {
-                'users': users
-            }
-        )
+        // const users = [
+        //     {
+        //         "id": 1,
+        //         "password": "pbkdf2_sha256$320000$d2AdQVAXuWOXP4bX2h2MjZ$7J41nP79MbqiKRoKLlcPZ+T+gvB9HJPhq2IGUyodkho=",
+        //         "last_login": "2022-01-13T06:46:15.797349Z",
+        //         "is_superuser": true,
+        //         "username": "admin",
+        //         "first_name": "admin",
+        //         "last_name": "admin",
+        //         "is_staff": true,
+        //         "is_active": true,
+        //         "date_joined": "2022-01-13T06:45:39.098578Z",
+        //         "role": "U",
+        //         "email": "admmin@admin.admin",
+        //         "user_permissions": []
+        //     }
+        // ]
+        axios
+            .get('http://127.0.0.1:8000/api/users/')
+            .then(response => {
+                let users = response.data
+                this.setState({
+                    'users': users
+                })
+            })
+            .catch(error => console.log(error))
     }
 
     render() {
