@@ -8,7 +8,7 @@ class Project(models.Model):
     name = models.CharField(verbose_name='Название проекта', max_length=200)
     description = models.CharField(verbose_name='Описание проекта', max_length=600)
     project_url = models.URLField(verbose_name='Ссылка на проект')
-    is_active = models.BooleanField(verbose_name='Активность')
+    is_active = models.BooleanField(verbose_name='Активность', default=True)
 
     def __str__(self):
         return f'{self.name}'
@@ -19,7 +19,7 @@ class TODO(models.Model):
     creator = models.OneToOneField(to=User, on_delete=models.SET_DEFAULT, default='Пользователь удалён')
     name = models.CharField(verbose_name='Название', max_length=150)
     text = models.CharField(verbose_name='Текст', max_length=1000)
-    is_active = models.BooleanField(verbose_name='Активность')
+    is_active = models.BooleanField(verbose_name='Активность', default=True)
 
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
