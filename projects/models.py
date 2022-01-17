@@ -16,7 +16,7 @@ class Project(models.Model):
 
 class TODO(models.Model):
     project = models.ForeignKey(to=Project, on_delete=models.CASCADE)
-    creator = models.OneToOneField(to=User, on_delete=models.SET_DEFAULT, default='Пользователь удалён')
+    creator = models.ForeignKey(to=User, on_delete=models.SET_DEFAULT, default='Пользователь удалён')
     name = models.CharField(verbose_name='Название', max_length=150)
     text = models.CharField(verbose_name='Текст', max_length=1000)
     is_active = models.BooleanField(verbose_name='Активность', default=True)
