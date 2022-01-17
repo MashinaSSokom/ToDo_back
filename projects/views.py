@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet
-from .serializers import ProjectModelSerializer, TODOModelSerializer, ProjectReadModelSerializer
+from .serializers import ProjectModelSerializer, TODOModelSerializer, ProjectReadModelSerializer, TODOReadModelSerializer
 
 from .models import Project, TODO
 
@@ -22,3 +22,7 @@ class TODOModelViewSet(ModelViewSet):
     queryset = TODO.objects.all()
     serializer_class = TODOModelSerializer
 
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return TODOReadModelSerializer
+        return TODOModelSerializer

@@ -25,3 +25,12 @@ class TODOModelSerializer(ModelSerializer):
     class Meta:
         model = TODO
         fields = '__all__'
+
+
+class TODOReadModelSerializer(ModelSerializer):
+    project = ProjectModelSerializer()
+    creator = UserModelSerializer()
+
+    class Meta:
+        model = TODO
+        fields = '__all__'
