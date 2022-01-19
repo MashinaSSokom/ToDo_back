@@ -5,7 +5,7 @@ from rest_framework.viewsets import ModelViewSet, GenericViewSet
 from .serializers import ProjectModelSerializer, TODOModelSerializer, ProjectReadModelSerializer, \
     TODOReadModelSerializer
 from .models import Project, TODO
-from .filters import ProjectFilter
+from .filters import ProjectFilter, TODOFilter
 
 # Create your views here.
 
@@ -24,7 +24,7 @@ class ProjectModelViewSet(ModelViewSet):
 class TODOModelViewSet(ModelViewSet):
     queryset = TODO.objects.all()
     serializer_class = TODOModelSerializer
-    filterset_fields = ['project']
+    filterset_class = TODOFilter
 
 
     def get_serializer_class(self):
