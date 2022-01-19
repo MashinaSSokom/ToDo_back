@@ -18,7 +18,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter, SimpleRouter
 
 import config.settings
-from users.views import UserModelViewSet #, get_view, post_view
+from users.views import UserViewSet
 from projects.views import ProjectModelViewSet, TODOModelViewSet
 
 router = SimpleRouter()
@@ -26,7 +26,7 @@ router = SimpleRouter()
 if config.settings.DEBUG:
     router = DefaultRouter()
 
-router.register('users', UserModelViewSet)
+router.register('users', UserViewSet)
 router.register('projects', ProjectModelViewSet)
 router.register('todos', TODOModelViewSet)
 
@@ -34,6 +34,4 @@ router.register('todos', TODOModelViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    # path('api/get/', get_view),
-    # path('api/post/', post_view)
 ]
