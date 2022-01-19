@@ -24,6 +24,8 @@ class ProjectModelViewSet(ModelViewSet):
 class TODOModelViewSet(ModelViewSet):
     queryset = TODO.objects.all()
     serializer_class = TODOModelSerializer
+    filterset_fields = ['project']
+
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
