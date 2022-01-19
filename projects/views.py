@@ -1,7 +1,9 @@
 from django.shortcuts import render
-from rest_framework.viewsets import ModelViewSet
-from .serializers import ProjectModelSerializer, TODOModelSerializer, ProjectReadModelSerializer, TODOReadModelSerializer
+from rest_framework.viewsets import ModelViewSet, GenericViewSet
+# from rest_framework.mixins import
 
+from .serializers import ProjectModelSerializer, TODOModelSerializer, ProjectReadModelSerializer, \
+    TODOReadModelSerializer
 from .models import Project, TODO
 
 
@@ -26,3 +28,9 @@ class TODOModelViewSet(ModelViewSet):
         if self.request.method == 'GET':
             return TODOReadModelSerializer
         return TODOModelSerializer
+
+    def perform_destroy(self, instance):
+        instance.is_active = False
+        instance.save()
+
+
