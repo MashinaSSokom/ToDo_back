@@ -8,6 +8,7 @@ import Menu from "./components/Menu";
 import Footer from "./components/Footer";
 import {BrowserRouter} from "react-router-dom";
 import AppRouter from "./components/AppRouter";
+import Navbar from "./components/UI/Navbar";
 
 class App extends React.Component {
     constructor(prop) {
@@ -17,24 +18,11 @@ class App extends React.Component {
         }
     }
 
-    // componentDidMount() {
-    //     axios
-    //         .get('http://127.0.0.1:8000/api/users/')
-    //         .then(response => {
-    //             let users = response.data
-    //             this.setState({
-    //                 'users': users
-    //             })
-    //         })
-    //         .catch(error => console.log(error))
-    // }
-
     render() {
         return (
             <div className={'App'}>
                 <BrowserRouter>
-                    <Menu/>
-                    {/*<UsersList users={this.state.users}/>*/}
+                    <Navbar/>
                     <AppRouter/>
                     <Footer/>
                 </BrowserRouter>

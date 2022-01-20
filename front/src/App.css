@@ -42,3 +42,13 @@ body{
     transform: rotate(360deg);
   }
 }
+
+.navbar{
+  display: flex;
+  justify-content: right;
+}
+
+.navbar__links a {
+  margin: 4px;
+
+}
