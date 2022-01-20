@@ -6,15 +6,15 @@ const ProjectDetail = () => {
     const [project, setProject] = useState({})
     const params = useParams()
     useEffect(async () => {
-        console.log(params)
         const response = await APIService.getProjectById({id: params.id})
-        console.log(response.data)
         setProject(response.data)
     }, [])
 
     return (
         <div>
-            <h1>Проект {project.name}</h1>
+            <h1>Проект <u>{project.name}</u></h1>
+            <p>Описание: {project.description}</p>
+            <p>Ссылка: <a href={project.projectUrl}>{project.projectUrl}</a></p>
         </div>
     );
 };
