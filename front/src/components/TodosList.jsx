@@ -29,7 +29,6 @@ const TodosList = ({todos}) => {
             <tbody>
                 {todos.map(todo => <TodosItem todo={todo} key={todo.id}/>)}
             </tbody>
-
         </table>
     )
 }
