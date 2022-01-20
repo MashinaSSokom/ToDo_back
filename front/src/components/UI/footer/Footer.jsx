@@ -1,6 +1,8 @@
+import classes from "./Footer.module.css";
+
 const Footer = ({user}) => {
     return (
-        <div className={'footer'}>
+        <div className={classes.footer}>
             Footer
         </div>
     )
