@@ -6,12 +6,12 @@ export default class APIService {
         return response
     }
 
-    async getAllProjects() {
+    static async getAllProjects() {
         const response = await axios.get('http://127.0.0.1:8000/api/projects/')
         return response
     }
 
-    async getAllTODOs() {
+    static async getAllTODOs() {
         const response = await axios.get('http://127.0.0.1:8000/api/todos/')
         return response
     }
