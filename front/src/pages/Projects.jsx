@@ -13,7 +13,7 @@ const Projects = () => {
     },[])
 
     return (
-        <div className={'users'}>
+        <div className={'projects'}>
             <h1>Projects</h1>
             <ProjectsList projects={projects}/>
         </div>
