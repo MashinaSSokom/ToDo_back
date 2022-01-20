@@ -6,6 +6,8 @@ import axios from "axios";
 import UsersList from "./components/UsersList";
 import Menu from "./components/Menu";
 import Footer from "./components/Footer";
+import {BrowserRouter} from "react-router-dom";
+import AppRouter from "./components/AppRouter";
 
 class App extends React.Component {
     constructor(prop) {
@@ -30,33 +32,15 @@ class App extends React.Component {
     render() {
         return (
             <div className={'App'}>
-                <Menu/>
-                <UsersList users={this.state.users}/>
-                <Footer/>
+                <BrowserRouter>
+                    <Menu/>
+                    {/*<UsersList users={this.state.users}/>*/}
+                    <AppRouter/>
+                    <Footer/>
+                </BrowserRouter>
             </div>
         )
     }
 }
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
 
 export default App;
