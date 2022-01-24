@@ -13,7 +13,7 @@ const Login = () => {
         const token = response.data.access
         const refresh = response.data.refresh
         if (!!token && !!refresh) {
-            localStorage.setItem('token', 'Bearer' + token)
+            localStorage.setItem('token', 'Bearer ' + token)
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + token
             setIsAuth(true)
         } else {

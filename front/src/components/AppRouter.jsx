@@ -1,13 +1,21 @@
-import React, {useContext} from 'react';
-import {Navigate, Route, Routes} from "react-router-dom";
+import React, {useContext, useEffect} from 'react';
+import {Navigate, Route, Routes, useNavigate} from "react-router-dom";
 import {publicRoutes, privateRoutes} from "../router"
 import {AuthContext} from "../context";
+import axios from "axios";
 
 
 const AppRouter = () => {
-    const {isAuth} = useContext(AuthContext)
-    console.log(isAuth)
-
+    const {isAuth, setIsAuth} = useContext(AuthContext)
+    const navigation = useNavigate()
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        if (token) {
+            axios.defaults.headers.common['Authorization'] = token
+            setIsAuth(true)
+            navigation('/projects')
+        }
+    }, [])
     return (
         isAuth
             ?

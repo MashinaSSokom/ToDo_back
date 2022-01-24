@@ -3,10 +3,12 @@ import './App.css';
 import React from 'react'
 
 import Footer from "./components/UI/footer/Footer";
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter, useNavigate} from "react-router-dom";
 import AppRouter from "./components/AppRouter";
 import Navbar from "./components/UI/navbar/Navbar";
 import {AuthContext} from "./context";
+import Projects from "./pages/Projects";
+import axios from "axios";
 
 class App extends React.Component {
     constructor(prop) {
