@@ -25,22 +25,20 @@ class App extends React.Component {
     }
 
     render() {
-        return (
-            <AuthContext.Provider value={{
-                setIsAuth: this.setIsAuth,
-                isAuth: this.state.isAuth
-            }}>
-                <div className={'App'}>
+        return (<AuthContext.Provider value={{
+            setIsAuth: this.setIsAuth,
+            isAuth: this.state.isAuth
+        }}>
+            <div className={'App'}>
 
-                    <BrowserRouter>
-                        <Navbar/>
-                        <AppRouter/>
-                        <Footer/>
-                    </BrowserRouter>
+                <BrowserRouter>
+                    <Navbar/>
+                    <AppRouter/>
+                    <Footer/>
+                </BrowserRouter>
 
-                </div>
-            </AuthContext.Provider>
-        )
+            </div>
+        </AuthContext.Provider>)
     }
 }
 
