@@ -20,7 +20,6 @@ class User(AbstractUser):
                             choices=USER_ROLE_CHOICES,
                             default=DEVELOPER)
     email = models.EmailField(verbose_name='Почта', unique=True)
-    groups = None
 
     class Meta:
         verbose_name = 'Пользователь'
