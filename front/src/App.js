@@ -3,28 +3,44 @@ import './App.css';
 import React from 'react'
 
 import Footer from "./components/UI/footer/Footer";
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter, useNavigate} from "react-router-dom";
 import AppRouter from "./components/AppRouter";
 import Navbar from "./components/UI/navbar/Navbar";
+import {AuthContext} from "./context";
+import Projects from "./pages/Projects";
+import axios from "axios";
 
 class App extends React.Component {
     constructor(prop) {
         super(prop);
         this.state = {
-            'users': []
+            'users': [],
+            'isAuth': false,
         }
+        this.setIsAuth = this.setIsAuth.bind(this)
+    }
+
+    setIsAuth(value) {
+        this.setState({
+            'isAuth': value
+        })
     }
 
     render() {
-        return (
+        return (<AuthContext.Provider value={{
+            setIsAuth: this.setIsAuth,
+            isAuth: this.state.isAuth
+        }}>
             <div className={'App'}>
+
                 <BrowserRouter>
                     <Navbar/>
                     <AppRouter/>
                     <Footer/>
                 </BrowserRouter>
+
             </div>
-        )
+        </AuthContext.Provider>)
     }
 }
 
