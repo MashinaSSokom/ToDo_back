@@ -1,11 +1,27 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Navigate, Route, Routes} from "react-router-dom";
-import {publicRoutes} from "../router"
-import Projects from "../pages/Projects";
+import {publicRoutes, privateRoutes} from "../router"
+import {AuthContext} from "../context";
 
 
 const AppRouter = () => {
+    const {isAuth} = useContext(AuthContext)
+    console.log(isAuth)
+
     return (
+        isAuth
+            ?
+            <Routes>
+                {privateRoutes.map(route =>
+                    <Route
+                        element={route.component}
+                        path={route.path}
+                        key={route.path}
+                    />
+                )}
+                <Route path="*" to={'/projects'} element={<Navigate to={'/projects'}/>}/>
+            </Routes>
+            :
             <Routes>
                 {publicRoutes.map(route =>
                     <Route
@@ -14,7 +30,7 @@ const AppRouter = () => {
                         key={route.path}
                     />
                 )}
-                <Route path="*" to={'/projects'} element={<Navigate to={'/projects'}/>}/>
+                <Route path="*" to={'/login'} element={<Navigate to={'/login'}/>}/>
             </Routes>
     );
 };

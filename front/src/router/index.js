@@ -6,9 +6,12 @@ import Login from "../pages/Login";
 
 
 export const publicRoutes = [
+    {path: '/login', component: <Login/>}
+]
+
+export const privateRoutes = [
     {path: '/projects', component: <Projects/>},
     {path: '/projects/:id', component: <ProjectDetail/>},
     {path: '/users', component: <Users/>},
     {path: '/todos', component: <TODOs/>},
-    {path: '/login', component: <Login/>}
 ]
