@@ -27,4 +27,9 @@ export default class APIService {
             {"username": login, "password": password})
         return response
     }
+    static async refreshToken({refreshToken}) {
+        const response = await axios.post('http://127.0.0.1:8000/api/token/refresh/',
+            {"refreshToken": refreshToken})
+        return response
+    }
 }
