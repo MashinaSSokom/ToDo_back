@@ -21,4 +21,10 @@ export default class APIService {
         const response = await axios.get(`http://127.0.0.1:8000/api/todos/`)
         return response
     }
+
+    static async login({login, password}) {
+        console.log(login, password)
+        // const response = await axios.get('')
+        // return response
+    }
 }
