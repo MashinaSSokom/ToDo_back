@@ -23,8 +23,8 @@ export default class APIService {
     }
 
     static async login({login, password}) {
-        console.log(login, password)
-        // const response = await axios.get('')
-        // return response
+        const response = await axios.post('http://127.0.0.1:8000/api/token/',
+            {"username": login, "password": password})
+        return response
     }
 }
