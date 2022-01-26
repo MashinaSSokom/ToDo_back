@@ -35,10 +35,12 @@ class TestUserView(APITestCase):
         # self.manager = User.objects.create(username='TestManager', email='test@manager.com', password='123',
         #                                    role=User.MANAGER, is_active=True, is_staff=True)
 
-    def test_get_list_by_admin(self):
-        factory = APIRequestFactory()
-        print(self.admin.groups.all())
+    def test_get_user_list_by_admin(self):
         self.client.force_login(self.admin)
         response = self.client.get('/api/users/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data.__len__(), 1)
+
+    def test_post_user_by_admin(self):
+        self.client.force_login(self.admin)
+        response = self.client.post('/api/users/', {})
+        self.assertEqual(response.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
