@@ -7,3 +7,8 @@ class UserModelSerializer(ModelSerializer):
         model = User
         fields = '__all__'
 
+
+class UserModelSerializerV2(ModelSerializer):
+    class Meta:
+        model = User
+        exclude = ['is_superuser', 'is_staff']

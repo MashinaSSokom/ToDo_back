@@ -10,7 +10,7 @@ from rest_framework.permissions import DjangoModelPermissions, SAFE_METHODS
 from rest_framework.renderers import JSONRenderer, BrowsableAPIRenderer
 from rest_framework.parsers import JSONParser
 
-from .serializers import UserModelSerializer
+from .serializers import UserModelSerializer, UserModelSerializerV2
 
 from .models import User
 
@@ -37,3 +37,9 @@ class UserViewSet(ListModelMixin, RetrieveModelMixin, UpdateModelMixin, GenericV
     serializer_class = UserModelSerializer
     renderer_classes = [JSONRenderer, BrowsableAPIRenderer]
     # permission_classes = [UsersCustomPermissions]
+
+    def get_serializer_class(self):
+        if self.request.version == 'v2':
+            return UserModelSerializerV2
+        return UserModelSerializer
+
