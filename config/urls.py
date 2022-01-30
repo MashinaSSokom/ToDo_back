@@ -12,13 +12,15 @@ router = SimpleRouter()
 if config.DEBUG:
     router = DefaultRouter()
 
-router.register('users', UserViewSet)
+# router.register('users', UserViewSet)
 router.register('projects', ProjectModelViewSet)
 router.register('todos', TODOModelViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('api/users/v1/', include('users.urls', namespace='v1')),
+    path('api/users/v2/', include('users.urls', namespace='v2')),
     path('api-auth/', include('rest_framework.urls')),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
