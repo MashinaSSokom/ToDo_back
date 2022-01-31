@@ -41,3 +41,15 @@ class Query(graphene.ObjectType):
 
 
 schema = graphene.Schema(query=Query)
+
+# Получить всех пользователей и задачи по id проекта в graphql:
+# {
+#   usersByProject(projectId: 10){
+#     id
+#     username
+#   }
+#   todosByProject(projectId: 1){
+#     id
+#     name
+#   }
+# }
