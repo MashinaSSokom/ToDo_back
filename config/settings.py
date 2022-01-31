@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'drf_yasg',
+    'graphene_django',
     'corsheaders',
     'django_filters',
     'users',
@@ -130,6 +131,18 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.NamespaceVersioning',
 }
+
+if DEBUG:
+    REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'].extend([
+        'rest_framework.renderers.BrowsableAPIRenderer',
+        'djangorestframework_camel_case.render.CamelCaseBrowsableAPIRenderer',
+
+    ])
+
+GRAPHENE = {
+    'SCHEMA': 'config.schema.schema'
+}
+
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(hours=12),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
@@ -157,9 +170,3 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
-if DEBUG:
-    REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'].extend([
-        'rest_framework.renderers.BrowsableAPIRenderer',
-        'djangorestframework_camel_case.render.CamelCaseBrowsableAPIRenderer',
-
-    ])
