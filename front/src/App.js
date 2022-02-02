@@ -31,14 +31,14 @@ class App extends React.Component {
             setIsAuth: this.setIsAuth,
             isAuth: this.state.isAuth
         }}>
-            <div className={'App'}>
-
-                <BrowserRouter>
-                    <Navbar/>
-                    <AppRouter/>
-                    <Footer/>
-                </BrowserRouter>
-
+            <div className={'App '}>
+                <div className={'Content'}>
+                    <BrowserRouter>
+                        <Navbar/>
+                        <AppRouter/>
+                    </BrowserRouter>
+                </div>
+                <Footer/>
             </div>
         </AuthContext.Provider>)
     }

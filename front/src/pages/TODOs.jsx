@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import APIService from "../API/APIService";
-import ProjectsList from "../components/ProjectsList";
+import ProjectsList from "../components/projects/ProjectsList";
 import TodosList from "../components/TodosList";
 import Title from "../components/UI/title/Title";
 

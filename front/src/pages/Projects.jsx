@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import APIService from "../API/APIService";
-import UsersList from "../components/UsersList";
-import ProjectsList from "../components/ProjectsList";
+import ProjectsList from "../components/projects/ProjectsList";
 import Title from "../components/UI/title/Title";
 
 const Projects = () => {
