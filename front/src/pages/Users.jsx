@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import APIService from "../API/APIService";
 import UsersList from "../components/UsersList";
+import Title from "../components/UI/title/Title";
 
 const Users = () => {
     const [users, setUsers] = useState([])
@@ -9,12 +10,12 @@ const Users = () => {
     useEffect(async () => {
         const response = await APIService.getAllUsers()
         console.log(response.data)
-        setUsers([...users, ...response.data])
+        setUsers([ ...response.data])
     },[])
 
     return (
         <div className={'users'}>
-            <h1>Users</h1>
+            <Title name={'Пользователи'}/>
             <UsersList users={users}/>
         </div>
     );

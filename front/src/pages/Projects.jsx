@@ -2,19 +2,19 @@ import React, {useEffect, useState} from 'react';
 import APIService from "../API/APIService";
 import UsersList from "../components/UsersList";
 import ProjectsList from "../components/ProjectsList";
+import Title from "../components/UI/title/Title";
 
 const Projects = () => {
    const [projects, setProjects] = useState([])
 
     useEffect(async () => {
         const response = await APIService.getAllProjects()
-        console.log(response.data)
-        setProjects([...projects, ...response.data.results])
+        setProjects([...response.data.results])
     },[])
 
     return (
         <div className={'projects'}>
-            <h1>Projects</h1>
+            <Title name={'Проекты'}/>
             <ProjectsList projects={projects}/>
         </div>
     );

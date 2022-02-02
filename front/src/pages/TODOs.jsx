@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import APIService from "../API/APIService";
 import ProjectsList from "../components/ProjectsList";
 import TodosList from "../components/TodosList";
+import Title from "../components/UI/title/Title";
 
 const TODOs = () => {
     const [todos, setTODOs] = useState([])
@@ -9,12 +10,12 @@ const TODOs = () => {
     useEffect(async () => {
         const response = await APIService.getAllTODOs()
         console.log(response.data)
-        setTODOs([...todos, ...response.data.results])
+        setTODOs([...response.data.results])
     },[])
 
     return (
         <div className={'todos'}>
-            <h1>TODOs</h1>
+            <Title name={'TODOs'}/>
             <TodosList todos={todos}/>
         </div>
     );
