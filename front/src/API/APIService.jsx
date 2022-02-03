@@ -12,7 +12,6 @@ export default class APIService {
     }
 
     static async getProjectById({id}) {
-        console.log(id)
         const response = await axios.get(`http://127.0.0.1:8000/api/projects/${id}/`)
         return response
     }
