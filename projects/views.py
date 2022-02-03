@@ -23,6 +23,9 @@ class ProjectModelViewSet(ModelViewSet):
             return ProjectReadModelSerializer
         return ProjectModelSerializer
 
+    def perform_destroy(self, instance):
+        instance.is_active = False
+        instance.save()
 
 class TODOPagination(PageNumberPagination):
     page_size = 20
