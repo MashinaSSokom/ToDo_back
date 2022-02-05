@@ -21,7 +21,14 @@ const CreateProject = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        console.log(members.map())
+        let project = {
+            "name": name,
+            "description": description,
+            "isActive": true,
+            "project_url": url,
+            "members": members.map(member=>parseInt(member.value))
+        }
+        const response = APIService.createProject({project})
 
     }
 

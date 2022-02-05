@@ -37,4 +37,10 @@ export default class APIService {
             {"refreshToken": refreshToken})
         return response
     }
+
+    static async createProject({project}) {
+        const response = await axios.post('http://127.0.0.1:8000/api/projects/',
+            project)
+        return response
+    }
 }
