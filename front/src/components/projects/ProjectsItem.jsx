@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link, useNavigate} from "react-router-dom";
-import APIService from "../../API/APIService";
 
 const ProjectsItem = ({project, ...props}) => {
     const navigate = useNavigate()
