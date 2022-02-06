@@ -5,7 +5,7 @@ const TodosItem = ({todo, ...props}) => {
 
     const navigate = useNavigate()
 
-    const deleteProject = async () => {
+    const deleteTODO = async () => {
         props.deleteItem(todo.id)
     }
 
@@ -13,11 +13,11 @@ const TodosItem = ({todo, ...props}) => {
     return (
         <div className={'todo-item '}>
             <span>#{props.number + 1}{todo.name}</span>
-            <p>{todo.text}}</p>
+            <p>{todo.text}</p>
             <p><Link to={`/projects/${todo.project.id}`}>Проект: {todo.project.name}</Link></p>
             <p>Активность: {todo.isActive.toString()}</p>
             <p>Создатель: {todo.creator.username}</p>
-            <button onClick={deleteProject}>Удалить</button>
+            <button onClick={deleteTODO}>Удалить</button>
         </div>
     );
 };

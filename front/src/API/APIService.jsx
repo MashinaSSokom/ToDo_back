@@ -53,4 +53,9 @@ export default class APIService {
             project)
         return response
     }
+     static async createTODO({todo}) {
+        const response = await axios.post('http://127.0.0.1:8000/api/todos/',
+            todo)
+        return response
+    }
 }
