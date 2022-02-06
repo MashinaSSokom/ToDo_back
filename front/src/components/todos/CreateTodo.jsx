@@ -24,8 +24,8 @@ const CreateTodo = ({todos, setTODOs, currProjects, setCurrProjects, ...props}) 
         currProjects ?
             <div>
                 <form onSubmit={handleSubmit}>
-                    <input type="text" name={'name'} value={name} onChange={(event) => setName(event.target.value)}/>
-                    <input type="text" name={'text'} value={text}
+                    <input type="text" name={'name'} placeholder={'Название'} value={name} onChange={(event) => setName(event.target.value)}/>
+                    <input type="text" name={'text'} placeholder={'Описание'} value={text}
                            onChange={(event) => setText(event.target.value)}/>
                     <select required={true} name={'projects'}
                             // defaultValue={currProjects.length ? currProjects[0].id : null}

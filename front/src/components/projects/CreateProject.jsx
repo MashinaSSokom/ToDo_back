@@ -40,10 +40,10 @@ const CreateProject = ({projects, setProjects, ...props}) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input type="text" name={'name'} value={name} onChange={(event) => setName(event.target.value)}/>
-            <input type="text" name={'description'} value={description}
+            <input type="text" name={'name'} placeholder={'Название'} value={name} onChange={(event) => setName(event.target.value)}/>
+            <input type="text" name={'description'} placeholder={'Описание'} value={description}
                    onChange={(event) => setDescription(event.target.value)}/>
-            <input type="text" name={'url'} value={url} onChange={(event) => setUrl(event.target.value)}/>
+            <input type="text" name={'url'} value={url} placeholder={'Ссылка на проект'} onChange={(event) => setUrl(event.target.value)}/>
             <select multiple required={true} name={'members'}
                     onChange={(event) => setMembers([...event.target.selectedOptions])}>
                 {users.map((user) => <option value={user.id} key={user.id}>{user.username}</option>)}
