@@ -4,6 +4,7 @@ import ProjectsList from "../components/projects/ProjectsList";
 import Title from "../components/UI/title/Title";
 import createProject from "../components/projects/CreateProject";
 import CreateProject from "../components/projects/CreateProject";
+import SearchProject from "../components/projects/SearchProject";
 
 const Projects = () => {
     const [projects, setProjects] = useState([])
@@ -11,7 +12,7 @@ const Projects = () => {
     useEffect(async () => {
         const response = await APIService.getAllProjects()
         setProjects([...response.data.results])
-    }, [projects.length])
+    }, [])
 
     const deleteItem = async (id) => {
         const deleteResponse = await APIService.deleteProjectById(id)
@@ -20,14 +21,20 @@ const Projects = () => {
             setProjects([...response.data.results])
         }
     }
-    const openProject = () => {
+    const searchProject = ({projectName}) => {
+        if (projectName) {
+            let filteredProjects = projects.filter(project => project.name.toLowerCase().includes(projectName.toLowerCase()))
+            setProjects([...filteredProjects])
+
+        }
 
     }
     return (
         <div className={'projects'}>
             <Title name={'Проекты'}/>
+            <SearchProject searchProject={searchProject}/>
             <CreateProject projects={projects} setProjects={setProjects}/>
-            <ProjectsList projects={projects} setProjects={setProjects} deleteItem={deleteItem} />
+            <ProjectsList projects={projects} setProjects={setProjects} deleteItem={deleteItem}/>
         </div>
     );
 };
