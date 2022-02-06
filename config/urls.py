@@ -16,7 +16,7 @@ router = SimpleRouter()
 if config.DEBUG:
     router = DefaultRouter()
 
-# router.register('users', UserViewSet)
+router.register('users', UserViewSet)
 router.register('projects', ProjectModelViewSet)
 router.register('todos', TODOModelViewSet)
 

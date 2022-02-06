@@ -1,6 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import APIService from "../API/APIService";
 import {useParams} from "react-router-dom";
+import Title from "../components/UI/title/Title";
 
 const ProjectDetail = () => {
     const [project, setProject] = useState({})
@@ -12,7 +13,7 @@ const ProjectDetail = () => {
 
     return (
         <div>
-            <h1>Проект <u>{project.name}</u></h1>
+            <Title name={<>Проект <u>{project.name}</u></>}/>
             <p>Описание: {project.description}</p>
             <p>Ссылка: <a href={project.projectUrl}>{project.projectUrl}</a></p>
         </div>

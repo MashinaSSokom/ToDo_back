@@ -13,7 +13,7 @@ const AppRouter = () => {
         if (token) {
             axios.defaults.headers.common['Authorization'] = token
             setIsAuth(true)
-            navigation('/projects')
+            // navigation('/projects')
         }
     }, [])
     return (
@@ -27,7 +27,7 @@ const AppRouter = () => {
                         key={route.path}
                     />
                 )}
-                <Route path="*" to={'/projects'} element={<Navigate to={'/projects'}/>}/>
+                {/*<Route path="*" to={'/projects'} element={<Navigate to={'/projects'}/>}/>*/}
             </Routes>
             :
             <Routes>
@@ -38,7 +38,7 @@ const AppRouter = () => {
                         key={route.path}
                     />
                 )}
-                <Route path="*" to={'/login'} element={<Navigate to={'/login'}/>}/>
+                {/*<Route path="*" to={'/login'} element={<Navigate to={'/login'}/>}/>*/}
             </Routes>
     );
 };

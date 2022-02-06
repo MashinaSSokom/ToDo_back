@@ -2,11 +2,14 @@ import React, {useContext, useState} from 'react';
 import APIService from "../API/APIService";
 import {AuthContext} from "../context";
 import axios from "axios";
+import Title from "../components/UI/title/Title";
+import {useNavigate} from "react-router-dom";
 
 const Login = () => {
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
     const {isAuth, setIsAuth} = useContext(AuthContext);
+    const navigate = useNavigate()
     const startLogin = async event => {
         event.preventDefault()
         const response = await APIService.login({login, password})
@@ -16,6 +19,7 @@ const Login = () => {
             localStorage.setItem('token', 'Bearer ' + token)
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + token
             setIsAuth(true)
+            navigate('/projects')
         } else {
             setIsAuth(false)
         }
@@ -23,7 +27,7 @@ const Login = () => {
 
     return (
         <div>
-            <h1>Страница для логина</h1>
+            <Title name={'Login'}/>
             <form onSubmit={event => startLogin(event)}>
                 <input type="text" onChange={event => setLogin(event.target.value)} value={login}
                        placeholder="Введите логин"/>
