@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useState} from 'react';
 import {UsersContext} from "../../context";
 import APIService from "../../API/APIService";
 
-const CreateProject = () => {
+const CreateProject = ({projects, setProjects, ...props}) => {
     const {users, setUsers} = useContext(UsersContext)
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
@@ -19,16 +19,21 @@ const CreateProject = () => {
 
     }, [])
 
-    const handleSubmit = (event) => {
+
+    const handleSubmit = async (event) => {
         event.preventDefault()
         let project = {
             "name": name,
             "description": description,
-            "isActive": true,
+            "is_active": true,
             "project_url": url,
-            "members": members.map(member=>parseInt(member.value))
+            "members": members.map(member => parseInt(member.value))
         }
-        const response = APIService.createProject({project})
+
+        const response = await APIService.createProject({project})
+        if (response.status === 201) {
+            setProjects([...projects, project])
+        }
 
     }
 

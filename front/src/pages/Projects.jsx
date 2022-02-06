@@ -11,7 +11,8 @@ const Projects = () => {
     useEffect(async () => {
         const response = await APIService.getAllProjects()
         setProjects([...response.data.results])
-    }, [])
+    }, [projects.length])
+
     const deleteItem = async (id) => {
         const deleteResponse = await APIService.deleteProjectById(id)
         if (deleteResponse.status === 204) {
@@ -25,9 +26,8 @@ const Projects = () => {
     return (
         <div className={'projects'}>
             <Title name={'Проекты'}/>
-            <CreateProject/>
-            {/*<button onClick={createProject}>Создать</button>*/}
-            <ProjectsList projects={projects} deleteItem={deleteItem} setProjects={setProjects}/>
+            <CreateProject projects={projects} setProjects={setProjects}/>
+            <ProjectsList projects={projects} setProjects={setProjects} deleteItem={deleteItem} />
         </div>
     );
 };
