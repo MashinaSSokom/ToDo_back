@@ -15,8 +15,8 @@ const TodosItem = ({todo, ...props}) => {
             <span>#{props.number + 1}{todo.name}</span>
             <p>{todo.text}}</p>
             <p><Link to={`/projects/${todo.project.id}`}>Проект: {todo.project.name}</Link></p>
-            <p>{todo.isActive.toString()}</p>
-            <p>{todo.creator.username}</p>
+            <p>Активность: {todo.isActive.toString()}</p>
+            <p>Создатель: {todo.creator.username}</p>
             <button onClick={deleteProject}>Удалить</button>
         </div>
     );

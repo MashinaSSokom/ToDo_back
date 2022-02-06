@@ -13,7 +13,6 @@ const TODOs = () => {
     },[])
 
     const deleteItem = async (id) => {
-        console.log(id)
         const deleteResponse = await APIService.deleteTODOById(id)
         if (deleteResponse.status === 204) {
             const response = await APIService.getAllTODOs()
