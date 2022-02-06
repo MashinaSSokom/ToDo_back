@@ -26,6 +26,16 @@ export default class APIService {
         return response
     }
 
+    static async getTODOById({id}) {
+        const response = await axios.get(`http://127.0.0.1:8000/api/todos/${id}/`)
+        return response
+    }
+
+    static async deleteTODOById(id) {
+        const response = await axios.delete(`http://127.0.0.1:8000/api/todos/${id}/`)
+        return response
+    }
+
     static async login({login, password}) {
         const response = await axios.post('http://127.0.0.1:8000/api/token/',
             {"username": login, "password": password})

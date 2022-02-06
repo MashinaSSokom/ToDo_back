@@ -71,3 +71,14 @@ body{
     margin: 10px;
     border: 1px solid black;
 }
+
+
+.todo-list{
+  margin: 0 -10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.todo-item{
+    margin: 10px;
+    border: 1px solid black;
+}
