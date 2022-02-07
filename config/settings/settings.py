@@ -29,7 +29,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'drf_yasg',
-    'graphene_django',
     'corsheaders',
     'django_filters',
     'users',
